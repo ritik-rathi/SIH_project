@@ -10,10 +10,23 @@ class Camera extends StatefulWidget {
 
 class _CameraState extends State<Camera> {
   File _image;
+  Future<Directory> getApplicationDocumentsDirectory() async {
+    
+  final Directory path = await getApplicationDocumentsDirectory();
+      // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
+      // https://github.com/flutter/flutter/issues/26431
+      // ignore: strong_mode_implicit_dynamic_method
+      // await _channel.invokeMethod('getApplicationDocumentsDirectory');
+  if (path == null) {
+    return null;
+  }
+  return path;
+}
 
-  Future getImage(ImageSource imagesource) async{
+  Future getImage() async{
     var image =await ImagePicker.pickImage(source: ImageSource.camera);
     final String path = (await getApplicationDocumentsDirectory()).path;
+    // final String path = await getApplicationDocumentsDirectory().path;
 
 // copy the file to a new path
    final File newImage = await image.copy('$path/image1.png');
