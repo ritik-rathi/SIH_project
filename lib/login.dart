@@ -22,15 +22,40 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  String dropdownValue = 'UP';
+  List<DropdownMenuItem<String>> liststate = [];
+  List<DropdownMenuItem<String>> listcity = [];
+  List<String> state = ['UP', 'Delhi', 'Hatayana'];
+  List<String> city = ['Kanpur', 'Aligarh', 'etc', 'etc', 'etc'];
+  String selected = null;
+
+  void listState() {
+    liststate = [];
+    liststate = state
+        .map((val) =>
+            new DropdownMenuItem<String>(child: new Text(val), value: val))
+        .toList();
+  }
+
+  void listCity() {
+    listcity = [];
+    listcity = city
+        .map((val) =>
+            new DropdownMenuItem<String>(child: new Text(val), value: val))
+        .toList();
+  }
+
   @override
   Widget build(BuildContext context) {
+    listState();
+    listCity();
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: new AppBar(
         title: Text('Login'),
+        backgroundColor: Colors.green[300],
       ),
       body: Container(
-          padding: EdgeInsets.all(16.0),
+          padding: EdgeInsets.only(top: 16.0, left: 30.0, right: 30.0),
           child: Form(
             key: formKey,
             child: Column(
@@ -59,35 +84,23 @@ class _LoginState extends State<Login> {
                     validator: (value) =>
                         value.isEmpty ? 'password cant be empty' : null,
                     onSaved: (value) => _pwd = value),
-                DropdownButton<String>(
-                  value: dropdownValue,
-                  onChanged: (String newValue) {
-                    setState(() {
-                      dropdownValue = newValue;
-                    });
+                DropdownButton(
+                  value: selected,
+                  hint: Text(' Choose State'),
+                  items: liststate,
+                  onChanged: (value) {
+                    selected = value;
+                    setState(() {});
                   },
-                  items: <String>['One', 'Two', 'Free', 'Four']
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
                 ),
-                DropdownButton<String>(
-                  value: dropdownValue,
-                  onChanged: (String newValue) {
-                    setState(() {
-                      dropdownValue = newValue;
-                    });
+                DropdownButton(
+                  value: selected,
+                  hint: Text(' Choose City'),
+                  items: listcity,
+                  onChanged: (value) {
+                    selected = value;
+                    setState(() {});
                   },
-                  items: <String>['One', 'Two', 'Free', 'Four']
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
                 ),
                 RaisedButton(
                   onPressed: () {
