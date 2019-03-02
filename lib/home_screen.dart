@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
                   Container(
                     height: 250.0,
                     width: double.infinity,
-                    color: Colors.yellow,
+                    color: Colors.red,
                   ),
                   Positioned(
                     bottom: 50.0,
@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
                       width: 400.0,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(200.0),
-                        color: Colors.yellow.withOpacity(0.4),
+                        color: Colors.red.withOpacity(0.4),
                       ),
                     ),
                   ),
@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                       width: 300.0,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(200.0),
-                        color: Colors.yellow.withOpacity(0.5),
+                        color: Colors.red.withOpacity(0.5),
                       ),
                     ),
                   ),
@@ -57,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.only(left: 15.0),
                           child: Text(
-                            'What do you want to buy?',
+                            'You Grow :',
                             style: TextStyle(
                                 fontFamily: 'Quicksand',
                                 fontSize: 20.0,
@@ -165,25 +165,22 @@ class HomeScreen extends StatelessWidget {
               new Row(
                 children: <Widget>[
                   new Container(
-                    width: 30.0,
+                    width: 90.0,
                     height: 100.0,
                     decoration: new BoxDecoration(
                       color: Colors.white,
-
                     ),
                     child: Column(
                       children: <Widget>[
-                        SizedBox(height: 10.0,),
+                        SizedBox(
+                          height: 10.0,
+                        ),
                         new Stack(
                           children: <Widget>[
                             new Text(
                               '23°C',
                               style: new TextStyle(),
                             ),
-                          Positioned(
-                            
-                          )
-
                           ],
                         )
                       ],
@@ -191,7 +188,7 @@ class HomeScreen extends StatelessWidget {
                   )
                 ],
               )
-             
+
               // Stack(
               //   children: <Widget>[
               //     SizedBox(height: 10.0),
