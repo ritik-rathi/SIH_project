@@ -25,6 +25,12 @@ class _CameraState extends State<Camera> {
     return path;
   }
 
+  Future<String> get _localPath async {
+  final directory = await getApplicationDocumentsDirectory();
+  print("directory ${directory.path}");
+  return directory.path;
+}
+
   Future getImage() async {
     var image = await ImagePickerSaver.pickImage(source: ImageSource.camera);
     final String path = (await getApplicationDocumentsDirectory()).path;
@@ -36,7 +42,7 @@ class _CameraState extends State<Camera> {
 // copy the file to a new path
     _image = await image.copy('$path/image1.png');
     //  _image.toString();
-    ImagePickerSaver.saveFile();
+    ImagePickerSaver.saveFile(fileData: imageBytes );
     // setState(() {
     //  _image =image;
     // });

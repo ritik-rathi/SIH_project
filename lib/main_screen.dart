@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sih_project/camera.dart';
 import 'package:sih_project/feed.dart';
+import 'package:sih_project/home_screen.dart';
 import 'package:sih_project/library.dart';
 
 //TODO:  Add fonts
@@ -12,7 +13,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
-  final List<Widget> menuItems = [Camera() , Feed() , Library()];
+  final List<Widget> menuItems = [HomeScreen(),Camera() , Feed() , Library()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,15 +23,15 @@ class _MainScreenState extends State<MainScreen> {
       body: menuItems[_currentIndex],   
       bottomNavigationBar:
           new BottomNavigationBar(currentIndex: _currentIndex, items: [
-        // new BottomNavigationBarItem(
-        //   icon: Icon(Icons.home),
-        //   title: new Text(
-        //     'Home',
-        //     style: new TextStyle(
-        //         //  fontFamily: ,
-        //         fontWeight: FontWeight.bold),
-        //   ),
-        // ),
+        new BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          title: new Text(
+            'Home',
+            style: new TextStyle(
+                //  fontFamily: ,
+                fontWeight: FontWeight.bold),
+          ),
+        ),
         new BottomNavigationBarItem(
             icon: Icon(Icons.camera),
             title: new Text(
