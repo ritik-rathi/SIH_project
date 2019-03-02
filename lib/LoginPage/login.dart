@@ -110,6 +110,7 @@ class _LoginState extends State<Login> {
                 RaisedButton(
                   onPressed: () {
                     validateAndSave();
+                    Navigator.pushNamed(context, '/mainscreen');
                   },
                   child: Text('Login'),
                 )

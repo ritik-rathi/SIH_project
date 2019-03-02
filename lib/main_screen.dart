@@ -4,13 +4,14 @@ import 'package:sih_project/feed.dart';
 import 'package:sih_project/library.dart';
 
 //TODO:  Add fonts
- int _currentIndex = 0;
+ 
 
 class MainScreen extends StatefulWidget {
   _MainScreenState createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
+  int _currentIndex = 0;
   List<Widget> menuItems = [MainScreen() , Camera() , Feed() , Library()];
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,8 @@ class _MainScreenState extends State<MainScreen> {
       appBar: new AppBar(
         title: new Text('Krishi Sahayak'),
       ),
-      body: menuItems[_currentIndex],
+      body: Container(child: menuItems[_currentIndex]),
+      //body: Library(),
       bottomNavigationBar:
           new BottomNavigationBar(currentIndex: _currentIndex, items: [
         new BottomNavigationBarItem(
