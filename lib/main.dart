@@ -5,6 +5,7 @@ import 'package:sih_project/option_select.dart';
 import 'main_screen.dart';
 import 'LoginPage/login.dart';
 import 'camera.dart';
+import 'feed.dart';
 
 void main(){
   runApp(MyApp());
@@ -15,10 +16,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      home: MainScreen(),
+      home: Login(),
       routes: {
         '.':(context) => Login(),
-        '/mainscreen':(context) => MainScreen(),        
+        '/mainscreen':(context) => MainScreen(),   
+        '/feed': (context) => Feed()     
       },      
     );
   }

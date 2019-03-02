@@ -22,6 +22,12 @@ dependencies:
   path_provider: ^0.5.0+1
   image_picker: ^0.4.4
   image_picker_saver: ^0.1.0
+  firebase_database: ^1.0.5
+  firebase_core: ^0.2.5+1
+  cloud_firestore: ^0.8.2
+  http: ^0.11.3+16
+  photos_library: ^0.0.4
+  exif: ^1.0.1  
 
 dev_dependencies:
   flutter_test:
