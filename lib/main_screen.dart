@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sih_project/camera.dart';
+import 'package:sih_project/feed.dart';
+import 'package:sih_project/library.dart';
 
 //TODO:  Add fonts
  int _currentIndex = 0;
@@ -8,12 +11,14 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  List<Widget> menuItems = [MainScreen() , Camera() , Feed() , Library()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
         title: new Text('Krishi Sahayak'),
       ),
+      body: menuItems[_currentIndex],
       bottomNavigationBar:
           new BottomNavigationBar(currentIndex: _currentIndex, items: [
         new BottomNavigationBarItem(
@@ -50,7 +55,7 @@ class _MainScreenState extends State<MainScreen> {
   }
   void onTabTapped(int index){
     setState(() {
-      _currentIndex = index; 
+      _currentIndex = index;       
     });
   }
 }
