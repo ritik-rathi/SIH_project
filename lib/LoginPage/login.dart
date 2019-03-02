@@ -6,15 +6,7 @@ String _pwd;
 String _phone;
 String _state;
 
-void validateAndSave() {
-  final form = formKey.currentState;
 
-  if (form.validate()) {
-    form.save();
-    print('Form is valid, email: $_aadhar, password: $_pwd');
-  } else
-    print('form is invalid');
-}
 
 class Login extends StatefulWidget {
   @override
@@ -27,6 +19,16 @@ class _LoginState extends State<Login> {
   List<String> state = ['UP', 'Delhi', 'Hatayana'];
   List<String> city = ['Kanpur', 'Aligarh', 'etc', 'etc', 'etc'];
   String selected = null;
+
+  void validateAndSave() {
+  final form = formKey.currentState;
+
+  if (form.validate()) {
+    form.save();
+    Navigator.pushNamed(context, '/mainscreen');
+  } else
+    print('form is invalid');
+}
 
   void listState() {
     liststate = [];
