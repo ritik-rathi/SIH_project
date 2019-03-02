@@ -6,12 +6,9 @@ String _pwd;
 String _phone;
 String _state;
 
-
-
-
 void validateAndSave() {
   final form = formKey.currentState;
-  
+
   if (form.validate()) {
     form.save();
     print('Form is valid, email: $_aadhar, password: $_pwd');
@@ -25,6 +22,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  String dropdownValue = 'UP';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,14 +62,33 @@ class _LoginState extends State<Login> {
                 DropdownButton<String>(
                   value: dropdownValue,
                   onChanged: (String newValue) {
-                      setState(() {
+                    setState(() {
                       dropdownValue = newValue;
-                 });}
-
-                  
-                    
-                  
-                ),    
+                    });
+                  },
+                  items: <String>['One', 'Two', 'Free', 'Four']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+                DropdownButton<String>(
+                  value: dropdownValue,
+                  onChanged: (String newValue) {
+                    setState(() {
+                      dropdownValue = newValue;
+                    });
+                  },
+                  items: <String>['One', 'Two', 'Free', 'Four']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
                 RaisedButton(
                   onPressed: () {
                     validateAndSave();
