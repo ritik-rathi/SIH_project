@@ -161,53 +161,37 @@ class HomeScreen extends StatelessWidget {
                       ])
                 ],
               ),
-              SizedBox(height: 10.0),
-              Stack(
+              SizedBox(height: 100.0),
+              new Row(
                 children: <Widget>[
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  Container(
-                    width: 75.0,
-                    height: 75.0,
+                  new Container(
+                    width: 30.0,
+                    height: 100.0,
                     decoration: new BoxDecoration(
-                      borderRadius: BorderRadius.circular(37.5),
-                      color: Colors.red,
-                    ),
-                  ),
-                  
-                  Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: Container(
-                      width: 75.0,
-                      height: 75.0,
-                      decoration: new BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(37.5)
-                      ),
-                    ),
-                  ),
-                   Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Container(
-                      width: 75.0,
-                      height: 75.0,
-                      decoration: new BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(37.5)
-                      ),
-                    ),
-                  ),
-                  new Text(
-                    'Other Crops',
-                    style: new TextStyle(
                       color: Colors.white,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold
+
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(height: 10.0,),
+                        new Stack(
+                          children: <Widget>[
+                            new Text(
+                              '23°C',
+                              style: new TextStyle(),
+                            ),
+                          Positioned(
+                            
+                          )
+
+                          ],
+                        )
+                      ],
                     ),
                   )
                 ],
               )
+             
               // Stack(
               //   children: <Widget>[
               //     SizedBox(height: 10.0),
