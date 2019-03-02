@@ -10,7 +10,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 // import 'package:firebase_core/firebase_core.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 class Camera extends StatefulWidget {
   // final File fileData =null;
   @override
@@ -20,16 +19,16 @@ class Camera extends StatefulWidget {
 class _CameraState extends State<Camera> {
   File _image;
 
-  Future getImage() async{
-    var tempImage = await ImagePicker.pickImage(source: ImageSource.gallery);
+  Future getImage() async {
+    var tempImage = await ImagePicker.pickImage(source: ImageSource.camera);
 
     setState(() {
-     _image =tempImage; 
+      _image = tempImage;
     });
   }
   // Future<Directory> getApplicationDocumentsDirectory() async {
   //   final Directory path = await getApplicationDocumentsDirectory();
-  //   // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
+  //   // remove this on when the invokeMethod update makes it to stable Flutter.
   //   // https://github.com/flutter/flutter/issues/26431
   //   // ignore: strong_mode_implicit_dynamic_method
   //   // await _channel.invokeMethod('getApplicationDocumentsDirectory');
@@ -66,31 +65,34 @@ class _CameraState extends State<Camera> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: _image == null
-            ? new Text('No image selected')
-            : enableUpload(),
+      body: Center(
+        child: _image == null ? new Text('Upload new Image') : enableUpload()
       ),
       floatingActionButton: new FloatingActionButton(
-        onPressed: (){},
+        onPressed: getImage,
+        // () {
+        //   final StorageReference firebaseStorageRef =
+        //       FirebaseStorage.instance.ref().child('myimage.jpg');
+        //   final StorageUploadTask task = firebaseStorageRef.putFile(_image);
+        // },
         tooltip: 'Pick Image',
         child: new Icon(Icons.camera),
       ),
     );
   }
 
-  Widget enableUpload(){
+  Widget enableUpload() {
     return Container(
       child: Column(
         children: <Widget>[
-          Image.file(_image , height: 300.0 , width : 300.0),
+          Image.file(_image, height: 300.0, width: 300.0),
           RaisedButton(
             elevation: 7.0,
             child: new Text(
              'Upload',
              style: new TextStyle(
                color: Colors.white
-             ),              
+             ),
             ),
             color: Colors.blue ,
             onPressed: (){
