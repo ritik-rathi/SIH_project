@@ -29,6 +29,7 @@ class _CameraState extends State<Camera> {
     return path;
   }
 
+<<<<<<< HEAD
 //   Future getImage() async {
 //     var image = await ImagePickerSaver.pickImage(source: ImageSource.camera);
 //     final String path = (await getApplicationDocumentsDirectory()).path;
@@ -52,6 +53,30 @@ class _CameraState extends State<Camera> {
 //     //  _image =image;
 //     // });
 //   }
+=======
+  Future<String> get _localPath async {
+  final directory = await getApplicationDocumentsDirectory();
+  print("directory ${directory.path}");
+  return directory.path;
+}
+
+  Future getImage() async {
+    var image = await ImagePickerSaver.pickImage(source: ImageSource.camera);
+    final String path = (await getApplicationDocumentsDirectory()).path;
+    // final String path = await getApplicationDocumentsDirectory().path;
+    // List<int> imageBytes = await widget.fileData.readAsBytes();
+    List<int> imageBytes = widget.fileData.readAsBytesSync();
+    print(imageBytes);
+    String base64Image = base64Encode(imageBytes);
+// copy the file to a new path
+    _image = await image.copy('$path/image1.png');
+    //  _image.toString();
+    ImagePickerSaver.saveFile(fileData: imageBytes );
+    // setState(() {
+    //  _image =image;
+    // });
+  }
+>>>>>>> 3c2c5c981aee66052efc50a2af3bbeff8811acc9
 
   @override
   Widget build(BuildContext context) {
