@@ -3,6 +3,8 @@ import 'package:sih_project/LoginPage/login.dart';
 import 'package:sih_project/library.dart';
 import 'package:sih_project/option_select.dart';
 import 'main_screen.dart';
+import 'LoginPage/login.dart';
+import 'camera.dart';
 
 void main(){
   runApp(MyApp());

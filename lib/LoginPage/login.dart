@@ -5,6 +5,9 @@ String _aadhar;
 String _pwd;
 String _phone;
 String _state;
+String selected = null;
+String selectedcity = null;
+
 
 
 
@@ -16,9 +19,9 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   List<DropdownMenuItem<String>> liststate = [];
   List<DropdownMenuItem<String>> listcity = [];
-  List<String> state = ['UP', 'Delhi', 'Hatayana'];
-  List<String> city = ['Kanpur', 'Aligarh', 'etc', 'etc', 'etc'];
-  String selected = null;
+  List<String> state = ['UP', 'Delhi', 'Harayana'];
+  //var cityMap = {"UP": ["Karawal Nagar",'laman'],"Delhi":["Old Delhi", "New Delhi"], "Harayana": ["Gurgaon", "Manesar"], null: ["Choose City"]};
+ 
 
   void validateAndSave() {
   final form = formKey.currentState;
@@ -30,6 +33,8 @@ class _LoginState extends State<Login> {
     print('form is invalid');
 }
 
+  List<String> city = ['Kanpur', 'Aligarh', 'etc', 'etc', 'etc'];
+  
   void listState() {
     liststate = [];
     liststate = state
@@ -96,17 +101,18 @@ class _LoginState extends State<Login> {
                   },
                 ),
                 DropdownButton(
-                  value: selected,
+                  value: selectedcity,
                   hint: Text(' Choose City'),
                   items: listcity,
                   onChanged: (value) {
-                    selected = value;
+                    selectedcity = value;
                     setState(() {});
                   },
                 ),
                 RaisedButton(
                   onPressed: () {
                     validateAndSave();
+                    Navigator.pushNamed(context, '/mainscreen');
                   },
                   child: Text('Login'),
                 )
