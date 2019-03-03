@@ -6,6 +6,14 @@ import 'main_screen.dart';
 import 'LoginPage/login.dart';
 import 'camera.dart';
 import 'feed.dart';
+import 'dart:io';
+import 'dart:core';
+import 'package:connectivity/connectivity.dart';
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
+import 'package:http/http.dart';
+
+Color color;
 
 void main(){
   runApp(MyApp());

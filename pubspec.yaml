@@ -30,6 +30,7 @@ dependencies:
   json_annotation: ^2.0.0
   intl: ^0.15.7
   uuid: ^2.0.0
+  connectivity: ^0.4.2
   # photos_library: ^0.0.4
   # exif: ^1.0.1  
 
