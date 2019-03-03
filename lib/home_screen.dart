@@ -11,13 +11,14 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Map data;
-  List userData;
+ 
 static String user = 'hahah';
   // static LoginData loginData = new LoginData(name: user);
   int _currentIndex = 0;
   // final List<Widget> menuItems = [HomeScreen(), Camera(), Feed(), Library()];
   final String url =
       'https://floating-oasis-94041.herokuapp.com/reinforcement/$user';
+  List userData;
 
     Future getData() async {
     http.Response res = await http.get(Uri.encodeFull(url));
@@ -30,6 +31,7 @@ static String user = 'hahah';
 
   @override
   Widget build(BuildContext context) {
+    
     return Container(
       child: _buildHome(),
     );
@@ -37,6 +39,7 @@ static String user = 'hahah';
 }
 
 Widget build(BuildContext context) {
+   List userData;
   return Scaffold(
     body: Container(
       child: ListView.builder(

@@ -31,10 +31,8 @@ dependencies:
   intl: ^0.15.7
   uuid: ^2.0.0
   connectivity: ^0.4.2
-<<<<<<< HEAD
-=======
+  geolocator: ^3.0.0
   # fluttertoast: ^3.0.1
->>>>>>> 5f34a7a59bdeda3c18356f4795b4b426105fe98b
   # photos_library: ^0.0.4
   # exif: ^1.0.1  
 
