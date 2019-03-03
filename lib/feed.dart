@@ -80,12 +80,24 @@ class FeedState extends State<Feed> {
         child: ListView.builder(
           itemCount: userData == null ? 0 : userData.length,
           itemBuilder: (BuildContext context, index) {
-            return Card(
+            return Container(
+              height: 150.0,
+              width: double.infinity,
               color: Colors.yellow[200],
-              margin: EdgeInsets.only(left: 80, right: 80, bottom: 16),
-              child: Column(
+              margin: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 10.0),
+              child: Row(
                 children: <Widget>[
-                  Container(margin:EdgeInsets.only(bottom: 10.0)),
+                  Container(margin: EdgeInsets.only(bottom: 4.0)),
+                  Image.network(
+                    '${userData[index]["photoUrl"]}',
+                    width: 150.0,
+                    height: 150.0,
+                  ),
+                  SizedBox(
+                    width: 4.0,
+                  ),
+                  Column(
+                    children: <Widget>[
                   Text(
                     '${userData[index]["disease"]}',
                     style: TextStyle(
@@ -93,18 +105,17 @@ class FeedState extends State<Feed> {
                         fontSize: 20,
                         color: Colors.black),
                   ),
-                  Image.network('${userData[index]["photoUrl"]}',
-                  width:100.0 , height: 100.0, ),
-                  // Image.network(userData[index]["photoUrl"],
-                  //     width: 100, height: 100.0),
-                  
                   Text(
                     'Upvotes: ${userData[index]["upvote"]}',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Colors.black),
-                  )
+                        color: Colors.black,
+                        )
+                        )
+                        ]
+                        ),
+                  
                 ],
               ),
             );
