@@ -57,15 +57,15 @@ class Lib extends StatelessWidget {
 
 final List<LibraryViewModel> list = [
   new LibraryViewModel(
-      icon: 'assets/farmer.jpg', name: 'Pepper bell bacterial spot'),
-  new LibraryViewModel(icon: 'assets/farmer.jpg', name: 'Potato early blight'),
-  new LibraryViewModel(icon: 'assets/farmer.jpg', name: 'Potato late blight'),
-  new LibraryViewModel(icon: 'assets/farmer.jpg', name: 'Tomato target spot'),
-  new LibraryViewModel(icon: 'assets/farmer.jpg', name: 'Tomato Mosaic Virus'),
+      icon: 'assets/images/BS.jpg', name: 'Pepper bell bacterial spot'),
+  new LibraryViewModel(icon: 'assets/images/potatoEB.jpg', name: 'Potato early blight'),
+  new LibraryViewModel(icon: 'assets/images/potatoLB.jpg', name: 'Potato late blight'),
+  new LibraryViewModel(icon: 'assets/images/tomatoTS.jpg', name: 'Tomato target spot'),
+  new LibraryViewModel(icon: 'assets/images/TMV.jpg', name: 'Tomato Mosaic Virus'),
   new LibraryViewModel(
-      icon: 'assets/farmer.jpg', name: 'Tomato yellow leaf curl virus'),
+      icon: 'assets/tylcv.jpg', name: 'Tomato yellow leaf curl virus'),
   new LibraryViewModel(
-      icon: 'assets/farmer.jpg', name: 'Tomato Bacterial Spot'),
+      icon: 'assets/tomatoBS.jpg', name: 'Tomato Bacterial Spot'),
   new LibraryViewModel(icon: 'assets/farmer.jpg', name: 'Tomato early blight'),
   new LibraryViewModel(icon: 'assets/farmer.jpg', name: 'Tomato spider mites'),
   new LibraryViewModel(

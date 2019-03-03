@@ -76,15 +76,20 @@ class FeedState extends State<Feed> {
     //int _index=0;
     return Scaffold(
       body: Container(
-        color: Colors.green[300],
+        color: Colors.white,
         child: ListView.builder(
           itemCount: userData == null ? 0 : userData.length,
           itemBuilder: (BuildContext context, index) {
             return Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [Colors.green[200], Colors.green[400]])),
               height: 150.0,
               width: double.infinity,
-              color: Colors.yellow[200],
-              margin: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 10.0),
+              //color: Colors.yellow[200],
+              margin: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 10.0, top: 10.0),
               child: Row(
                 children: <Widget>[
                   Container(margin: EdgeInsets.only(bottom: 4.0)),
@@ -96,26 +101,29 @@ class FeedState extends State<Feed> {
                   SizedBox(
                     width: 4.0,
                   ),
-                  Column(
-                    children: <Widget>[
-                  Text(
-                    '${userData[index]["disease"]}',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Colors.black),
-                  ),
-                  Text(
-                    'Upvotes: ${userData[index]["upvote"]}',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Colors.black,
-                        )
-                        )
-                        ]
-                        ),
-                  
+                  Column(children: <Widget>[
+                    Text(
+                      '${userData[index]["disease"]} (${userData[index]["location"]})',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: Colors.black),
+                    ),
+                    SizedBox(height: 10.0),
+                    Container(
+                      height: 90,
+                      width: 200,
+                      child: Text(userData[0]["remedies"],
+                          style:
+                              new TextStyle(color: Colors.black, fontSize: 13)),
+                    ),
+                    Text('Upvotes: ${userData[index]["upvote"]}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.black,
+                        ))
+                  ]),
                 ],
               ),
             );
