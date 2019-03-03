@@ -76,16 +76,28 @@ class FeedState extends State<Feed> {
     //int _index=0;
     return Scaffold(
       body: Container(
-        color: Colors.green[300],
+        color: Colors.white,
+      
         child: ListView.builder(
           itemCount: userData == null ? 0 : userData.length,
           itemBuilder: (BuildContext context, index) {
             return Card(
-              color: Colors.yellow[200],
               margin: EdgeInsets.only(left: 80, right: 80, bottom: 16),
+              child:DecoratedBox(
+                decoration: new BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [Colors.green[200], Colors.green[400]]
+                  )
+                ),
+              
+              
               child: Column(
                 children: <Widget>[
                   Container(margin:EdgeInsets.only(bottom: 10.0)),
+                  Image.network(userData[index]["photoUrl"],
+                      width: 100, height: 100.0),
                   Text(
                     '${userData[index]["disease"]}',
                     style: TextStyle(
@@ -93,11 +105,6 @@ class FeedState extends State<Feed> {
                         fontSize: 20,
                         color: Colors.black),
                   ),
-                  Text('${userData[index]["description"]}',
-                  style: TextStyle(fontSize: 15, color: Colors.black),),
-                  // Image.network(userData[index]["photoUrl"],
-                  //     width: 100, height: 100.0),
-                  
                   Text(
                     'Upvotes: ${userData[index]["upvote"]}',
                     style: TextStyle(
@@ -107,7 +114,7 @@ class FeedState extends State<Feed> {
                   )
                 ],
               ),
-            );
+            ));
           },
         ),
       ),
