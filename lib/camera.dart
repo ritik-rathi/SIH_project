@@ -9,6 +9,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:uuid/uuid.dart';
+// import 'package:geolocator/geolocator.dart';
 
 final FirebaseApp app = FirebaseApp(name: 'krishi');
 
@@ -98,6 +99,24 @@ class _CameraState extends State<Camera> {
   }
 
   var uuid = new Uuid();
+
+  // Future<Position> position =  Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+  
+
+  // static var geolocator = Geolocator();
+  // static var locationOptions =
+  //     LocationOptions(accuracy: LocationAccuracy.high, distanceFilter: 10);
+
+  // Position position =geolocator.getCurrentPosition()
+
+  // StreamSubscription<Position> positionStream =
+  //     geolocator.getPositionStream(locationOptions).listen((Position position) {
+  //   print(position == null
+  //       ? 'Unknown'
+  //       : position.latitude.toString() +
+  //           ', ' +
+  //           position.longitude.toString());
+  // });
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,7 +137,7 @@ class _CameraState extends State<Camera> {
     );
   }
 
-    void _showToast(BuildContext context) {
+  void _showToast(BuildContext context) {
     final scaffold = Scaffold.of(context);
     scaffold.showSnackBar(
       SnackBar(
@@ -153,17 +172,19 @@ class _CameraState extends State<Camera> {
             color: Colors.blue,
             onPressed: () {
               var path = uuid.v1();
-              var url = "https://floating-oasis-94041.herokuapp.com/image?lat=100&lon=90&name=hahah&photoUrl=$path";
+              // var positionData = position.toString();
+              var url =
+                  "https://floating-oasis-94041.herokuapp.com/image?lat=100&lon=90&name=hahah&photoUrl=$path";
               var client = http.Client();
-              client.post(url, body: {"name": "doodle"}).then(
-                  (response) {
+              client.post(url, body: {"name": "doodle"}).then((response) {
                 print("Response status: ${response.statusCode}");
                 print("Response body: ${response.body}");
+                // print("$positionData");
               });
               final StorageReference firebaseStorageRef =
                   FirebaseStorage.instance.ref().child('${path}.jpg');
               final StorageUploadTask task = firebaseStorageRef.putFile(_image);
-              Navigator.popAndPushNamed(context , '/mainscreen');
+              Navigator.popAndPushNamed(context, '/mainscreen');
             },
           )
         ],
