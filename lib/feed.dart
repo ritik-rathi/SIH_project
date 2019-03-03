@@ -86,8 +86,6 @@ class FeedState extends State<Feed> {
               child: Column(
                 children: <Widget>[
                   Container(margin:EdgeInsets.only(bottom: 10.0)),
-                  Image.network(userData[index]["photoUrl"],
-                      width: 100, height: 100.0),
                   Text(
                     '${userData[index]["disease"]}',
                     style: TextStyle(
@@ -95,6 +93,11 @@ class FeedState extends State<Feed> {
                         fontSize: 20,
                         color: Colors.black),
                   ),
+                  Text('${userData[index]["description"]}',
+                  style: TextStyle(fontSize: 15, color: Colors.black),),
+                  // Image.network(userData[index]["photoUrl"],
+                  //     width: 100, height: 100.0),
+                  
                   Text(
                     'Upvotes: ${userData[index]["upvote"]}',
                     style: TextStyle(

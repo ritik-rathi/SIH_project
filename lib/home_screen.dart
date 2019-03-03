@@ -2,26 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
 
 class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Map data;
+  List userData;
+
+  final String url =
+      'https://floating-oasis-94041.herokuapp.com/reinforcement/hahah';
+
+  Future getData() async {
+    http.Response res = await http.get(Uri.encodeFull(url));
+    data = json.decode(res.body);
+    setState(() {
+      userData = data['data'];
+      print(userData.toString());
+    });
+  }
+
+  void initState() {
+    getData().then((onValue) => {super.initState(): url});
+    //super.initState();
+    /*then((onValue) => {Toast.makeText(userData).show();});*/
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: _buildHome(),
-    );
-  }
-}
-
-//main display
-Widget _buildHome() {
-  return Scaffold(
-    body: ListView(
-      children: <Widget>[
+    return Scaffold(
+        body: Container(
+      child: Column(children: <Widget>[
         Column(
           children: <Widget>[
             Stack(
@@ -173,40 +188,26 @@ Widget _buildHome() {
                           ),
                         ),
                       ),
-                      SizedBox(height: 10.0)
+                      SizedBox(height: 10.0),
+                      Container(
+                        height: 50,
+                            width: double.infinity,
+                            child: Column(
+                              children: <Widget>[
+                                Text(userData[0]["name"]),
+                                Image.network(userData[0]["photoUrl"], height: 20,),
+                              ],
+                            ),
+                      )
                     ])
               ],
             ),
             SizedBox(height: 100.0),
-            new Row(
-              children: <Widget>[
-                new Container(
-                  width: 90.0,
-                  height: 100.0,
-                  decoration: new BoxDecoration(
-                    color: Colors.white,
-                  ),
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      new Stack(
-                        children: <Widget>[
-                          new Text(
-                            '23°C',
-                            style: new TextStyle(),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                )
-              ],
-            )
           ],
-        )
-      ],
-    ),
-  );
+        ),
+      ]),
+    ));
+  }
 }
+
+//main display
