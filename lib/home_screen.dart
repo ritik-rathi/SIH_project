@@ -8,6 +8,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:core';
 
+
 class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -30,6 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void initState() {
     getData().then((onValue) => {super.initState(): url});
+
+    
     //super.initState();
     /*then((onValue) => {Toast.makeText(userData).show();});*/
   }

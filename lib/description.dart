@@ -6,6 +6,13 @@ class Description extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        decoration: new BoxDecoration(
+          gradient: new LinearGradient(
+            begin: Alignment.centerLeft,
+            end :Alignment .centerRight,
+            colors : [Colors.green[400] , Colors.greenAccent]
+          )
+        ),
         child: ListView(children: <Widget>[
       Column(children: <Widget>[
         new Container(
