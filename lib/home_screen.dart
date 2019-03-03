@@ -102,8 +102,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                           style: BorderStyle.solid,
                                           width: 2.0),
                                       image: DecorationImage(
-                                          image:
-                                              AssetImage('assets/images/tomato.png'),
+                                          image: AssetImage(
+                                              'assets/images/tomato.png'),
                                           fit: BoxFit.fill)),
                                 ),
                               ),
@@ -121,8 +121,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                         style: BorderStyle.solid,
                                         width: 2.0),
                                     image: DecorationImage(
-                                        image: AssetImage('assets/potato.png'),
-                                        fit: BoxFit.contain)),
+                                        image: AssetImage('assets/images/potato.png'),
+                                        fit: BoxFit.fill)),
                               ),
                               Container(
                                 alignment: Alignment.centerLeft,
@@ -135,8 +135,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                         style: BorderStyle.solid,
                                         width: 2.0),
                                     image: DecorationImage(
-                                        image: AssetImage('assets/wheat.jpg'),
-                                        fit: BoxFit.contain)),
+                                        image: AssetImage('assets/images/wheat.jpg'),
+                                        fit: BoxFit.fill)),
                               ),
                               Container(
                                 alignment: Alignment.centerLeft,
@@ -149,8 +149,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                         style: BorderStyle.solid,
                                         width: 2.0),
                                     image: DecorationImage(
-                                        image: AssetImage('assets/Onion.png'),
-                                        fit: BoxFit.contain)),
+                                        image: AssetImage('assets/images/Onion.png'),
+                                        fit: BoxFit.fill)),
                               ),
                             ],
                           ),
@@ -196,14 +196,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                   children: <Widget>[
                                     Center(
                                         child: Text(
-                                      userData[0]["name"],
+                                      userData[0]["disease"],
                                       style: new TextStyle(
-                                          color: Colors.blueGrey,
+                                          color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 30.0),
                                     )),
-                                    SizedBox(
-                                      height: 50.0,
+                                    
+                                    Container(
+                                      height: 150,
+                                      width: 150,
+                                      child: Text(userData[0]["remedies"], style: TextStyle(fontSize: 15, color: Colors.white),),
+                                    ),
+                                    Container(
+                                      height: 15.0,
                                     ),
                                     Row(
                                       children: <Widget>[
@@ -215,7 +221,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 .toString()
                                                 .substring(71, 104);
                                             var url =
-                                                "https://floating-oasis-94041.herokuapp.com/reinforcement/${photoUrl}";
+                                                "https://floating-oasis-94041.herokuapp.com/reinforcement/$photoUrl";
 
                                             var client = http.Client();
                                             print("tripathi");
@@ -264,81 +270,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(height: 20.0),
               ],
             ),
-            Container(
-              height: 400.0,
-              width: double.infinity,
-              child: Row(
-                children: <Widget>[
-                  Image.network(
-                    userData[0]["photoUrl"],
-                    height: 380.0,
-                    width: 200,
-                    fit: BoxFit.cover,
-                  ),
-                  SizedBox(
-                    width: 20.0,
-                  ),
-                  Column(
-                    children: <Widget>[
-                      Center(
-                          child: Text(
-                        userData[0]["name"].toString().toUpperCase(),
-                        style: new TextStyle(
-                            color: Colors.blueGrey,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30.0),
-                      )),
-                      SizedBox(
-                        height: 50.0,
-                      ),
-                      Row(
-                        children: <Widget>[
-                          IconButton(
-                            onPressed: () {
-                              print("rathi");
-                              var photoUrl = userData[0]["photoUrl"]
-                                  .toString()
-                                  .substring(71, 104);
-                              var url =
-                                  "https://floating-oasis-94041.herokuapp.com/reinforcement/${photoUrl}";
-
-                              var client = http.Client();
-                              print("tripathi");
-                              client.post(url,
-                                  body: {"justified": "true"}).then((response) {
-                                print(
-                                    "Response status: ${response.statusCode}");
-                                print("Response body: ${response.body}");
-                              });
-                            },
-                            icon: Icon(Icons.check),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              var photoUrl = userData[0]["photoUrl"]
-                                  .toString()
-                                  .substring(71, 104);
-                              var url =
-                                  "https://floating-oasis-94041.herokuapp.com/reinforcement/${photoUrl}";
-
-                              var client = http.Client();
-                              client
-                                  .post(url, body: {"justified": "false"}).then(
-                                      (response) {
-                                print(
-                                    "Response status: ${response.statusCode}");
-                                print("Response body: ${response.body}");
-                              });
-                            },
-                            icon: Icon(Icons.redo),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            )
           ]),
         ));
   }

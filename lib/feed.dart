@@ -113,7 +113,7 @@ class FeedState extends State<Feed> {
                     Container(
                       height: 90,
                       width: 200,
-                      child: Text(userData[0]["solution"],
+                      child: Text(userData[0]["remedies"],
                           style:
                               new TextStyle(color: Colors.black, fontSize: 13)),
                     ),
