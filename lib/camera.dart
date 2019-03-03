@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-// import 'package:image_picker_saver/image_picker_saver.dart';
+import 'package:http/http.dart' as http;
 import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
@@ -41,6 +41,13 @@ class Camera extends StatefulWidget {
 
 class _CameraState extends State<Camera> {
   File _image;
+//   Future<List<Photo>> fetchPhotos(http.Client client) async {
+//   final response =
+//       await client.get('https://floating-oasis-94041.herokuapp.com/feed');
+
+//   // Use the compute function to run parsePhotos in a separate isolate
+//   return compute(parsePhotos, response.body);
+// }
 
   List<Item> items = List();
   Item item;
@@ -51,7 +58,7 @@ class _CameraState extends State<Camera> {
     super.initState();
     item = Item(photo: "", cropName: "");
 
-       _onEntryAdded(Event event) {
+    _onEntryAdded(Event event) {
       setState(() {
         items.add(Item.fromSnapshot(event.snapshot));
       });
@@ -70,8 +77,6 @@ class _CameraState extends State<Camera> {
     databaseRef = database.reference().child('cropName');
     databaseRef.onChildAdded.listen(_onEntryAdded);
     databaseRef.onChildChanged.listen(_onEntryChanged);
-
- 
   }
 
   void handleSubmit() {
@@ -91,6 +96,7 @@ class _CameraState extends State<Camera> {
       _image = tempImage;
     });
   }
+
   var uuid = new Uuid();
   @override
   Widget build(BuildContext context) {
@@ -108,6 +114,17 @@ class _CameraState extends State<Camera> {
         // },
         tooltip: 'Pick Image',
         child: new Icon(Icons.camera),
+      ),
+    );
+  }
+
+    void _showToast(BuildContext context) {
+    final scaffold = Scaffold.of(context);
+    scaffold.showSnackBar(
+      SnackBar(
+        content: const Text('Added to favorite'),
+        action: SnackBarAction(
+            label: 'UNDO', onPressed: scaffold.hideCurrentSnackBar),
       ),
     );
   }
@@ -135,9 +152,18 @@ class _CameraState extends State<Camera> {
             ),
             color: Colors.blue,
             onPressed: () {
+              var path = uuid.v1();
+              var url = "https://floating-oasis-94041.herokuapp.com/image?lat=100&lon=90&name=hahah&photoUrl=$path";
+              var client = http.Client();
+              client.post(url, body: {"name": "doodle"}).then(
+                  (response) {
+                print("Response status: ${response.statusCode}");
+                print("Response body: ${response.body}");
+              });
               final StorageReference firebaseStorageRef =
-                  FirebaseStorage.instance.ref().child('${uuid.v1()}.jpg');
+                  FirebaseStorage.instance.ref().child('${path}.jpg');
               final StorageUploadTask task = firebaseStorageRef.putFile(_image);
+              Navigator.popAndPushNamed(context , '/mainscreen');
             },
           )
         ],
@@ -146,17 +172,17 @@ class _CameraState extends State<Camera> {
   }
 }
 
-  // Future<Directory> getApplicationDocumentsDirectory() async {
-  //   final Directory path = await getApplicationDocumentsDirectory();
-  //   // remove this on when the invokeMethod update makes it to stable Flutter.
-  //   // https://github.com/flutter/flutter/issues/26431
-  //   // ignore: strong_mode_implicit_dynamic_method
-  //   // await _channel.invokeMethod('getApplicationDocumentsDirectory');
-  //   if (path == null) {
-  //     return null;
-  //   }
-  //   return path;
-  // }
+// Future<Directory> getApplicationDocumentsDirectory() async {
+//   final Directory path = await getApplicationDocumentsDirectory();
+//   // remove this on when the invokeMethod update makes it to stable Flutter.
+//   // https://github.com/flutter/flutter/issues/26431
+//   // ignore: strong_mode_implicit_dynamic_method
+//   // await _channel.invokeMethod('getApplicationDocumentsDirectory');
+//   if (path == null) {
+//     return null;
+//   }
+//   return path;
+// }
 
 //   Future getImage() async {
 //     var image = await ImagePickerSaver.pickImage(source: ImageSource.camera);
