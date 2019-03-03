@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sih_project/LoginPage/login.dart';
+import 'package:sih_project/description.dart';
+import 'package:sih_project/experts.dart';
 import 'package:sih_project/home_screen.dart';
 import 'package:sih_project/library.dart';
 import 'package:sih_project/option_select.dart';
@@ -39,7 +41,9 @@ class MyApp extends StatelessWidget {
       routes: {
         '.':(context) => Login(),
         '/mainscreen':(context) => MainScreen(),   
-        '/feed': (context) => Feed()     
+        '/feed': (context) => Feed(),
+        '/description':(context) => Description(),
+        '/experts' : (context) => Experts()
       },      
     );
   }
