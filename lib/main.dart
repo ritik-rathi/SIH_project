@@ -9,6 +9,14 @@ import 'camera.dart';
 import 'feed.dart';
 import 'package:connectivity/connectivity.dart';
 import 'dart:async';
+import 'dart:io';
+import 'dart:core';
+import 'package:connectivity/connectivity.dart';
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
+import 'package:http/http.dart';
+
+Color color;
 
 void main(){
   runApp(MyApp());
