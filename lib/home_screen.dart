@@ -2,12 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Map data;
+  List userData;
+static String user = 'hahah';
+  // static LoginData loginData = new LoginData(name: user);
+  int _currentIndex = 0;
+  // final List<Widget> menuItems = [HomeScreen(), Camera(), Feed(), Library()];
+  final String url =
+      'https://floating-oasis-94041.herokuapp.com/reinforcement/$user';
+
+    Future getData() async {
+    http.Response res = await http.get(Uri.encodeFull(url));
+    data = json.decode(res.body);
+    setState(() {
+      userData = data['data'];
+      print(userData.toString());
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +34,26 @@ class _HomeScreenState extends State<HomeScreen> {
       child: _buildHome(),
     );
   }
+}
+
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: Container(
+      child: ListView.builder(
+          itemCount: userData == null ? 0 : userData.length,
+          itemBuilder: (BuildContext context, index) {
+            return Card(
+              child: Column(
+                children: <Widget>[
+                  _buildHome(),
+                  Image.network(userData[index]["photoUrl"]),
+                  Text('${userData[index]["disease"]}')
+                ],
+              ),
+            );
+          }),
+    ),
+  );
 }
 
 //main display

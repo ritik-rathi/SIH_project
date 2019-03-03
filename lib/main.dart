@@ -7,12 +7,22 @@ import 'main_screen.dart';
 import 'LoginPage/login.dart';
 import 'camera.dart';
 import 'feed.dart';
+import 'package:connectivity/connectivity.dart';
+import 'dart:async';
 
 void main(){
   runApp(MyApp());
 }
 
+
 class MyApp extends StatelessWidget {
+  
+// var connectivityResult = await (Connectivity().checkConnectivity());
+// if (connectivityResult == ConnectivityResult.mobile) {
+//   // I am connected to a mobile network.
+// } else if (connectivityResult == ConnectivityResult.wifi) {
+//   // I am connected to a wifi network.
+// }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
