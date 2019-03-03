@@ -206,9 +206,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: <Widget>[
                             Center(child: Text(userData[0]["name"] , style: new TextStyle(
                               color : Colors.blueGrey,fontWeight: FontWeight.bold , fontSize: 30.0),)),
-                            SizedBox(
-                              height: 50.0,
-                            ),
+                            
                             Row(
                               children: <Widget>[
                                 IconButton(
@@ -238,7 +236,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         .toString()
                                         .substring(71, 104);
                                     var url =
-                                        "https://floating-oasis-94041.herokuapp.com/reinforcement/${photoUrl}";
+                                        "https://floating-oasis-94041.herokuapp.com/reinforcement/$photoUrl";
 
                                     var client = http.Client();
                                     client.post(url, body: {
