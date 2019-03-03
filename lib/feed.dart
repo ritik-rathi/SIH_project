@@ -93,8 +93,8 @@ class FeedState extends State<Feed> {
                         fontSize: 20,
                         color: Colors.black),
                   ),
-                  Text('${userData[index]["description"]}',
-                  style: TextStyle(fontSize: 15, color: Colors.black),),
+                  Image.network('${userData[index]["photoUrl"]}',
+                  width:100.0 , height: 100.0, ),
                   // Image.network(userData[index]["photoUrl"],
                   //     width: 100, height: 100.0),
                   

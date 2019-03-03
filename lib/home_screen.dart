@@ -3,10 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:http/http.dart' as http;
-<<<<<<< HEAD
 import 'dart:async';
-=======
->>>>>>> 2a2afbd6a778793a91bdc531fcaad39a0627fa09
 import 'dart:convert';
 
 class HomeScreen extends StatefulWidget {
@@ -16,24 +13,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   Map data;
   List userData;
-<<<<<<< HEAD
-=======
-static String user = 'hahah';
-  // static LoginData loginData = new LoginData(name: user);
-  int _currentIndex = 0;
-  // final List<Widget> menuItems = [HomeScreen(), Camera(), Feed(), Library()];
-  final String url =
-      'https://floating-oasis-94041.herokuapp.com/reinforcement/$user';
-
-    Future getData() async {
-    http.Response res = await http.get(Uri.encodeFull(url));
-    data = json.decode(res.body);
-    setState(() {
-      userData = data['data'];
-      print(userData.toString());
-    });
-  }
->>>>>>> 2a2afbd6a778793a91bdc531fcaad39a0627fa09
 
   final String url =
       'https://floating-oasis-94041.herokuapp.com/reinforcement/hahah';
@@ -47,7 +26,6 @@ static String user = 'hahah';
     });
   }
 
-<<<<<<< HEAD
   void initState() {
     getData().then((onValue) => {super.initState(): url});
     //super.initState();
@@ -59,33 +37,6 @@ static String user = 'hahah';
     return Scaffold(
         body: Container(
       child: Column(children: <Widget>[
-=======
-Widget build(BuildContext context) {
-  return Scaffold(
-    body: Container(
-      child: ListView.builder(
-          itemCount: userData == null ? 0 : userData.length,
-          itemBuilder: (BuildContext context, index) {
-            return Card(
-              child: Column(
-                children: <Widget>[
-                  _buildHome(),
-                  Image.network(userData[index]["photoUrl"]),
-                  Text('${userData[index]["disease"]}')
-                ],
-              ),
-            );
-          }),
-    ),
-  );
-}
-
-//main display
-Widget _buildHome() {
-  return Scaffold(
-    body: ListView(
-      children: <Widget>[
->>>>>>> 2a2afbd6a778793a91bdc531fcaad39a0627fa09
         Column(
           children: <Widget>[
             Stack(
@@ -252,11 +203,21 @@ Widget _buildHome() {
               ],
             ),
             SizedBox(height: 100.0),
+
           ],
         ),
       ]),
     ));
   }
+
+  
+Widget itemCard(){
+  return Container(
+    height: 150.0,
+    width: double.infinity,
+    color: Colors.white,
+  );
+}
 }
 
-//main display
+
