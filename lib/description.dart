@@ -30,7 +30,7 @@ class Data extends StatelessWidget{
 }
 
 class Description extends StatelessWidget {
-  
+  // final List<LibraryViewModel> list;  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

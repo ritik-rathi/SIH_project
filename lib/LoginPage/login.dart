@@ -91,12 +91,12 @@ class _LoginState extends State<Login> {
                       value.isEmpty ? 'Please enter your mobile number' : null,
                   onSaved: (value) => aadhar = value,
                 ),
-                TextFormField(
-                  decoration: new InputDecoration(labelText: 'Aadhar Number'),
-                  validator: (value) =>
-                      value.isEmpty ? 'Aadhar cant be empty' : null,
-                  onSaved: (value) => aadhar = value,
-                ),
+                // TextFormField(
+                //   decoration: new InputDecoration(labelText: 'Aadhar Number'),
+                //   validator: (value) =>
+                //       value.isEmpty ? 'Aadhar cant be empty' : null,
+                //   onSaved: (value) => aadhar = value,
+                // ),
                 TextFormField(
                     decoration: new InputDecoration(labelText: 'Password'),
                     obscureText: true,

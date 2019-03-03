@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class LibraryViewModel {
   final String name;
   final String icon;
+  final String description;
 
-  LibraryViewModel({this.icon, this.name});
+  LibraryViewModel({this.icon, this.name , this.description});
 }
 
 class Lib extends StatelessWidget {
@@ -57,20 +58,29 @@ class Lib extends StatelessWidget {
 
 final List<LibraryViewModel> list = [
   new LibraryViewModel(
-      icon: 'assets/images/BS.jpg', name: 'Pepper bell bacterial spot'),
-  new LibraryViewModel(icon: 'assets/images/potatoEB.jpg', name: 'Potato early blight'),
+      icon: 'assets/images/BS.jpg', name: 'Pepper bell bacterial spot',description: 'Bacterial spot is one of the most devastating diseases of pepper and tomato grown in warm, moist environments. Once present in the crop, it is almost impossible to control the disease and prevent major fruit loss when environmental conditions remain favorable.'),
+  new LibraryViewModel(
+    icon: 'assets/images/potatoEB.jpg',
+     name: 'Potato early blight',
+     description: 'Bacterial spot is one of the most devastating diseases of pepper and tomato grown in warm, moist environments. Once present in the crop, it is almost impossible to control the disease and prevent major fruit loss when environmental conditions remain favorable.'),
   new LibraryViewModel(icon: 'assets/images/potatoLB.jpg', name: 'Potato late blight'),
-  new LibraryViewModel(icon: 'assets/images/tomatoTS.jpg', name: 'Tomato target spot'),
-  new LibraryViewModel(icon: 'assets/images/TMV.jpg', name: 'Tomato Mosaic Virus'),
+  new LibraryViewModel(icon: 'assets/images/tomatoTS.jpg', name: 'Tomato target spot' , description: 'Potato early blight is caused by the fungus Alternaria solani and occurs wherever potatoes are grown, and is the disease most targeted by potato growers with fungicides in the U.S. '),
+
+  new LibraryViewModel(icon: 'assets/images/TMV.jpg', name: 'Tomato Mosaic Virus' ,description: 'Late blight (Phytophthora infestans) fungus is in the same genus as the fungus causing pink rot (P. erythroseptica)'),
+
   new LibraryViewModel(
-      icon: 'assets/tylcv.jpg', name: 'Tomato yellow leaf curl virus'),
+      icon: 'assets/tylcv.jpg', name: 'Tomato yellow leaf curl virus', description: 'The disease starts on the older leaves and spreads upwards. The first signs are irregular-shaped spots (less than 1 mm) with a yellow margin'),
+
   new LibraryViewModel(
-      icon: 'assets/tomatoBS.jpg', name: 'Tomato Bacterial Spot'),
+      icon: 'assets/tomatoBS.jpg', name: 'Tomato Bacterial Spot',description: 'There is no cure for tomato mosaic virus. Once a plant is infected, it stays that way, and the virus can easily be transmitted to other plants.'),
+
   new LibraryViewModel(icon: 'assets/farmer.jpg', name: 'Tomato early blight'),
   new LibraryViewModel(icon: 'assets/farmer.jpg', name: 'Tomato spider mites'),
   new LibraryViewModel(
-      icon: 'assets/farmer.jpg', name: 'Tomato Septoria Spot '),
-  new LibraryViewModel(icon: 'assets/farmer.jpg', name: 'Tomato Late Blight'),
+      icon: 'assets/farmer.jpg', name: 'Tomato Septoria Spot ',description: 'Tomato yellow leaf curl virus (TYLCV) is the name given to a complex of geminiviruses infecting tomato cultures worldwide. TYLCV is transmitted by a single insect species, the whitefly Bemisia tabaci.'),
+
+  new LibraryViewModel(icon: 'assets/farmer.jpg', name: 'Tomato Late Blight',description: 'Bacterial spot is one of the most dangerous tomato diseases in existence, since it spreads rapidly and is very difficult to control. In most cases, tomato plant become so distorted by bacterial spot that their marketability severely decreases.'),
+
   new LibraryViewModel(icon: 'assets/farmer.jpg', name: 'Tomato leaf mold')
 ];
 
